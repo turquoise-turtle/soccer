@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <title>SoccerApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <p id="text">Loading</p>
+      <section id="selects">
+        <!--<select id="SSearchRounds"> 
+  <option value="">All</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  </select>-->
+        <div class="select">
+          <select class="s" id="resulttype" v-model="resulttype">
+            <option disabled value="">Please select one</option>
+            <option value="result">Results</option>
+            <option value="tables">Table</option>
+            <option value="fixtures">Fixtures</option>
+          </select>
+        </div>
+        <div class="select">
+          <select class="s" id="SSearchAges" v-model="age"> 
+            <!--<option disabled value="">Please select one</option>-->
+            <option value="">All</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="21">21</option>
+            <option value="35">35</option>
+            <option value="45">45</option>
+            <option value="AL">AL</option>
+            <option value="W06">W06</option>
+            <option value="W07">W07</option>
+            <option value="W08">W08</option>
+            <option value="W09">W09</option>
+            <option value="W10">W10</option>
+            <option value="W11">W11</option>
+            <option value="W12">W12</option>
+            <option value="W14">W14</option>
+            <option value="W16">W16</option>
+            <option value="W18">W18</option>
+            <option value="W21">W21</option>
+            <option value="W30">W30</option>
+            <option value="W36">W36</option>
+            <option value="WS">WS</option>
+          </select>
+        </div>
+        <div class="select">
+          <select class="s" id="SSearchGrades" v-model="grade"> 
+            <option value="">All</option>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+          </select>
+        </div>
+        <div class="select clubs">
+          <!--<select class="s" id="SSearchClubs" v-model="club" @input="loadtable">-->
+          <select class="s" id="SSearchClubs" v-model="club">
+            <option value="">All</option>
+            <option value="Bangor">Bangor</option>
+            <option value="Barden Ridgebacks">Barden Ridgebacks</option>
+            <option value="Bonnet Bay">Bonnet Bay</option>
+            <option value="Bosco">Bosco</option>
+            <option value="Bundeena Maianbar">Bundeena Maianbar</option>
+            <option value="BYE">BYE</option>
+            <option value="Caringbah Redbacks">Caringbah Redbacks</option>
+            <option value="Como Jannali">Como Jannali</option>
+            <option value="Cronulla RSL">Cronulla RSL</option>
+            <option value="Cronulla Seagulls">Cronulla Seagulls</option>
+            <option value="Engadine Crusaders">Engadine Crusaders</option>
+            <option value="Engadine Eagles">Engadine Eagles</option>
+            <option value="Georges River">Georges River</option>
+            <option value="Grays Point">Grays Point</option>
+            <option value="Gwawley Bay">Gwawley Bay</option>
+            <option value="Gymea United">Gymea United</option>
+            <option value="Heathcote Waratah">Heathcote Waratah</option>
+            <option value="Kirrawee">Kirrawee</option>
+            <option value="Lilli Pilli">Lilli Pilli</option>
+            <option value="Loftus Yarrawarrah">Loftus Yarrawarrah</option>
+            <option value="Marton">Marton</option>
+            <option value="Menai Hawks">Menai Hawks</option>
+            <option value="Miranda Magpies">Miranda Magpies</option>
+            <option value="North Sutherland">North Sutherland</option>
+            <option value="St. Patricks">St. Patricks</option>
+            <option value="Sutherland Titans">Sutherland Titans</option>
+            <option value="Sylvania Heights">Sylvania Heights</option>
+          </select>
+        </div>
+        
+        <div>
+          <a class="button" @click="update" href="#">
+            <p v-if="!loading" style="display: inline" >Load</p>
+            <div v-if="loading" style="display: block" class="loader-container">
+              <div class="bouncing-loader">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+      <!--<a class="button" @click="loadtable" href="#">Load</a>-->
+      <div id="table"></div>
+    </div>
+    <script src="soccerapp.js"></script>
+  </body>
+</html>

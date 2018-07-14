@@ -1,0 +1,120 @@
+/* Fonts from Google Fonts - more at https://fonts.google.com */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
+
+body {
+  background-color: white;
+  font-family: "Open Sans", sans-serif;
+  padding: 5px 25px;
+  /*font-size: 18px;*/
+  margin: 0;
+  color: #444;
+}
+
+h1 {
+  font-family: "Merriweather", serif;
+  font-size: 32px;
+}
+
+#selects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.select {
+  overflow: hidden;
+  background: url(arrow.jpg) no-repeat right #ddd;
+  border: 1px solid #ccc;
+  width: 4em;
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+
+.clubs {
+  width: 8em;
+}
+
+.s {
+  background: transparent;
+  border: 0;
+  /*font-weight: bold;*/
+  /*font-size: 1.5em;*/
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  
+  padding: .5em .8em;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+#table {
+  /*margin-left: -1em;*/
+}
+
+@media only screen and (max-width: 476px) {
+  /* horizontal scrollbar for tables if mobile screen */
+  table {
+    overflow-x: auto;
+    display: block;
+    table-layout:fixed;
+  }
+  td { 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    word-wrap: break-word;
+  }
+}
+
+
+@keyframes bouncing-loader {
+  from {
+    opacity: 1;
+    transform: translateY(0.3rem);
+  }
+  to {
+    opacity: 0.1;
+    transform: translateY(-0.3rem);
+  }
+}
+.loader-container {
+  
+}
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+}
+.bouncing-loader > div {
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.02rem;
+  background: #fff;
+  border-radius: 50%;
+  animation: bouncing-loader 0.6s infinite alternate;
+}
+.bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/*
+.select {
+  overflow: hidden
+  border: 1px solid #ccc;
+  width: 4em;
+  margin-right: 2em;
+  margin-bottom: 2em;
+.s {
+  border: 0;
+  width: 100%;
+*/
