@@ -3,8 +3,8 @@ var vm = new Vue({
   el: '#app',
   data: {
     //round: '',
-    resulttype: 'result',
-    type: 'ssresult',
+    resulttype: 'tables',
+    type: 'sstables',
     age: '18',
     grade: 'E',
     club: '',
