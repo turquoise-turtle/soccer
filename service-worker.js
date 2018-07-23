@@ -34,7 +34,6 @@ self.addEventListener('fetch', function(evt) {
 function precache() {
   return caches.open(CACHE).then(function (cache) {
 	return cache.addAll([
-	  '/soccer/',
 	  '/soccer/offline.html',
 	  '/soccer/index.html',
 	  '/soccer/arrow.jpg',

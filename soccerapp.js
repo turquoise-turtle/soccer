@@ -101,7 +101,7 @@ var vm = new Vue({
           thisurl = 'http://www.whateverorigin.org/get?url=' + encodeURIComponent(thisurl);
           break;
         case 5:
-          thisurl = 'http://www.corsify.me/' + thisurl;
+          thisurl = 'https://www.corsify.me/' + thisurl;
           break;
         default:
           thisurl = 'https://soccerapp-cors.herokuapp.com/' + thisurl;
