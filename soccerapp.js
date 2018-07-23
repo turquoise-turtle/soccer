@@ -1,3 +1,14 @@
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', function() {
+		navigator.serviceWorker.register('/soccer/service-worker.js')
+		.then(function (reg){
+			console.log('sw registered:', reg);
+		}, /*catch*/ function(error) {
+			console.log('Service worker registration failed:', error);
+		});
+	});
+}
+
 //console.log('new', location.search);
 var vm = new Vue({
   el: '#app',
@@ -162,10 +173,7 @@ var vm = new Vue({
     document.querySelector('#text').innerHTML = '';
   },
   watch: {
-    // whenever question changes, this function will run
     club: function (newClub, oldClub) {
-      //this.answer = 'Waiting for you to stop typing...'
-      //this.debouncedGetAnswer()
       this.update();
     }
   },
