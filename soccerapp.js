@@ -98,9 +98,6 @@ var vm = new Vue({
           thisurl = 'https://cors-anywhere.herokuapp.com/' + thisurl;
           break;
         case 4:
-          thisurl = 'http://www.whateverorigin.org/get?url=' + encodeURIComponent(thisurl);
-          break;
-        case 5:
           thisurl = 'https://www.corsify.me/' + thisurl;
           break;
         default:
