@@ -65,7 +65,7 @@ function fromCache(request) {
       //return matching || Promise.reject('no-match');
       
       if (navigator.onLine) {
-      	return matching || fetch(event.request);
+      	return matching || fetch(request);
       } else {
       	if (request.method === 'GET' && request.headers.get('accept').includes('text/html')) {
       		return cache.match('/soccer/offline.html');
@@ -90,6 +90,9 @@ function fromCache(request) {
 
 // Update consists in opening the cache, performing a network request and storing the new response data.
 function update(request) {
+  if (request.url.indexOf('soccerapp-cors') > -1) {
+  	return Promise.resolve();
+  }
   return caches.open(CACHE).then(function (cache) {
     return fetch(request).then(function (response) {
       return cache.put(request, response);
