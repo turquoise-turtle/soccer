@@ -33,6 +33,7 @@
     <div id="app">
       <p id="text">Loading</p>
       <section id="selects">
+      	<h2>SoccerApp</h2>
         <!--<select id="SSearchRounds"> 
   <option value="">All</option>
   <option value="1">1</option>
@@ -156,6 +157,9 @@
       </section>
       <!--<a class="button" @click="loadtable" href="#">Load</a>-->
       <div id="table"></div>
+      <div id="offline" v-if="offline">
+      	<p>The network connection is disconnected. You are viewing a cached copy of the page</p>
+      </div>
     </div>
     <script src="vue.min.js"></script>
     <script src="soccerapp.js"></script>

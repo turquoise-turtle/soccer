@@ -100,6 +100,9 @@ var vm = new Vue({
         case 4:
           thisurl = 'https://www.corsify.me/' + thisurl;
           break;
+        case 5:
+          window.location.reload(true);
+          break;
         default:
           thisurl = 'https://soccerapp-cors.herokuapp.com/' + thisurl;
       }
