@@ -54,11 +54,6 @@ function precache() {
       '/soccer/icon/favicon-96x96.png',
       '/soccer/icon/favicon-128.png',
       '/soccer/icon/favicon-196x196.png',
-      '/soccer/icon/mstile-70x70.png',
-      '/soccer/icon/mstile-144x144.png',
-      '/soccer/icon/mstile-150x150.png',
-      '/soccer/icon/mstile-310x150.png',
-      '/soccer/icon/mstile-310x310.png'
     ]);
   });
 }
@@ -68,6 +63,16 @@ function fromCache(request) {
   return caches.open(CACHE).then(function (cache) {
     return cache.match(request).then(function (matching) {
       //return matching || Promise.reject('no-match');
+      
+      if (navigator.onLine) {
+      	return matching || fetch(event.request);
+      } else {
+      	if (request.method === 'GET' && request.headers.get('accept').includes('text/html')) {
+      		return cache.match('/soccer/offline.html');
+      	}
+      	return Promise.reject('no-match, offline, not html');
+      }
+      /*
       if (navigator.onLine) {
       	return matching || Promise.reject('no-match');
       } else {
@@ -76,6 +81,9 @@ function fromCache(request) {
       	  return match || Promise.reject('no-match');
       	});
       }
+      */
+    }).catch(function(error) {
+      console.log(error);
     });
   });
 }
