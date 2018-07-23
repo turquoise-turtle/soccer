@@ -1,6 +1,6 @@
 {
 	"name": "Soccer Tables/Results/Fixtures Progressive Web App",
-	"short_name": "soccer",
+	"short_name": "SoccerApp",
 	"description": "Progressive Web App that lets you view the tables, results and fixtures for your soccer team.",
 	"icons": [
 		{
