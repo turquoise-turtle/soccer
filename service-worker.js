@@ -22,7 +22,7 @@ self.addEventListener('install', function(evt) {
 
 // On fetch, use cache but update the entry with the latest contents from the server.
 self.addEventListener('fetch', function(evt) {
-  console.log('The service worker is serving the asset.');
+  //console.log('The service worker is serving the asset.');
   // You can use `respondWith()` to answer immediately, without waiting for the network response to reach the service worker...
   evt.respondWith(fromCache(evt.request));
   // ...and `waitUntil()` to prevent the worker from being killed until the cache is updated.
@@ -34,6 +34,7 @@ self.addEventListener('fetch', function(evt) {
 function precache() {
   return caches.open(CACHE).then(function (cache) {
     return cache.addAll([
+      '/',
       '/soccer/offline.html',
       '/soccer/index.html',
       '/soccer/arrow.jpg',
@@ -54,6 +55,8 @@ function precache() {
       '/soccer/icon/favicon-96x96.png',
       '/soccer/icon/favicon-128.png',
       '/soccer/icon/favicon-196x196.png',
+      '/soccer/icon/icon-192x192.png',
+      '/soccer/icon/icon-512x512.png'
     ]);
   });
 }
@@ -62,8 +65,21 @@ function precache() {
 function fromCache(request) {
   return caches.open(CACHE).then(function (cache) {
     return cache.match(request).then(function (matching) {
-      //return matching || Promise.reject('no-match');
+      //v3
+      if (!matching) {
+      	if (navigator.onLine) {
+      	  return fetch(request);
+      	} else {
+      	  if (request.method === 'GET' && request.headers.get('accept').includes('text/html')) {
+      	  	return cache.match('/soccer/offline.html');
+      	  }
+
+      	}
+      } else {
+      	return matching;
+      }
       
+      /*v3
       if (navigator.onLine) {
       	return matching || fetch(request);
       } else {
@@ -72,7 +88,8 @@ function fromCache(request) {
       	}
       	return Promise.reject('no-match, offline, not html');
       }
-      /*
+      */
+      /*v2
       if (navigator.onLine) {
       	return matching || Promise.reject('no-match');
       } else {
@@ -81,6 +98,9 @@ function fromCache(request) {
       	  return match || Promise.reject('no-match');
       	});
       }
+      */
+      /*v1
+      return matching || Promise.reject('no-match');
       */
     }).catch(function(error) {
       console.log(error);
