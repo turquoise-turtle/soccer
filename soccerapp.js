@@ -20,7 +20,10 @@ var vm = new Vue({
     grade: 'E',
     club: '',
     e: 0,
-    loading: true
+    loading: true,
+    offline: false,
+    a2hsshow: false,
+    installPromptEvent: ''
   },
   methods: {
     reverseMessage: function () {
@@ -166,11 +169,30 @@ var vm = new Vue({
         }
       };
       xhr.send();
+    },
+    a2hsclick: function(e) {
+    	var that = this;
+    	this.a2hsshow = false;
+    	this.installPromptEvent.prompt();
+    	this.installPromptEvent.userChoice.then(function(choice) {
+			if (choice.outcome === 'accepted') {
+				console.log('User accepted the A2HS prompt');
+			} else {
+				console.log('User dismissed the A2HS prompt');
+			}
+			// Clear the saved prompt since it can't be used again
+			that.installPromptEvent = null;
+		});
     }
   },
   mounted: function () {
+    var that = this;
     this.loadtable();
     document.querySelector('#text').innerHTML = '';
+    window.addEventListener('beforeinstallprompt', function(event){
+    	that.installPromptEvent = event;
+    	that.a2hsshow = true;
+    });
   },
   watch: {
     club: function (newClub, oldClub) {
@@ -215,7 +237,3 @@ xhr.onload = function(e) {
 }
 xhr.send();
 */
-
-function open() {
-  console.log('open');
-}
