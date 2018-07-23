@@ -8,6 +8,7 @@ if ('serviceWorker' in navigator) {
 		});
 	});
 }
+var installPromptEvent;
 
 //console.log('new', location.search);
 var vm = new Vue({
@@ -22,8 +23,7 @@ var vm = new Vue({
     e: 0,
     loading: true,
     offline: false,
-    a2hsshow: false,
-    installPromptEvent: ''
+    a2hsshow: false
   },
   methods: {
     reverseMessage: function () {
@@ -173,15 +173,15 @@ var vm = new Vue({
     a2hsclick: function(e) {
     	var that = this;
     	this.a2hsshow = false;
-    	this.installPromptEvent.prompt();
-    	this.installPromptEvent.userChoice.then(function(choice) {
+    	window.installPromptEvent.prompt();
+    	window.installPromptEvent.userChoice.then(function(choice) {
 			if (choice.outcome === 'accepted') {
 				console.log('User accepted the A2HS prompt');
 			} else {
 				console.log('User dismissed the A2HS prompt');
 			}
 			// Clear the saved prompt since it can't be used again
-			that.installPromptEvent = null;
+			window.installPromptEvent = null;
 		});
     }
   },
@@ -190,7 +190,7 @@ var vm = new Vue({
     this.loadtable();
     document.querySelector('#text').innerHTML = '';
     window.addEventListener('beforeinstallprompt', function(event){
-    	that.installPromptEvent = event;
+    	window.installPromptEvent = event;
     	that.a2hsshow = true;
     });
   },
