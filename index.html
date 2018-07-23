@@ -32,8 +32,8 @@
   <body>
     <div id="app">
       <p id="text">Loading</p>
+      <h2>SoccerApp</h2>
       <section id="selects">
-      	<h2>SoccerApp</h2>
         <!--<select id="SSearchRounds"> 
   <option value="">All</option>
   <option value="1">1</option>
@@ -158,6 +158,12 @@
       <!--<a class="button" @click="loadtable" href="#">Load</a>-->
       <div id="table"></div>
       <p>Credit to shirefootball.com.au for data</p>
+      <div v-if="offline">
+      	<br><br>
+      </div>
+      <div v-if="a2hsshow">
+      	<br><br>
+      </div>
       <div id="offline" v-if="offline">
       	<p>The network connection is offline. You are viewing a cached copy of the page</p>
       </div>

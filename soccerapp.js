@@ -183,6 +183,13 @@ var vm = new Vue({
 			// Clear the saved prompt since it can't be used again
 			window.installPromptEvent = null;
 		});
+    },
+    updateonline: function() {
+    	if (!navigator.onLine) {
+    		this.offline = true;
+    	} else {
+    		this.offline = false;
+    	}
     }
   },
   mounted: function () {
@@ -193,6 +200,8 @@ var vm = new Vue({
     	window.installPromptEvent = event;
     	that.a2hsshow = true;
     });
+    window.addEventListener('online', this.updateonline);
+    window.addEventListener('offline', this.updateonline);
   },
   watch: {
     club: function (newClub, oldClub) {
