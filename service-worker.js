@@ -33,31 +33,31 @@ self.addEventListener('fetch', function(evt) {
 // Open a cache and use `addAll()` with an array of assets to add all of them to the cache. Return a promise resolving when all the assets are added.
 function precache() {
   return caches.open(CACHE).then(function (cache) {
-    return cache.addAll([
-      '/',
-      '/soccer/offline.html',
-      '/soccer/index.html',
-      '/soccer/arrow.jpg',
-      '/soccer/soccerapp.js',
-      '/soccer/style.css',
-      '/soccer/vue.min.js',
-      '/soccer/favicon.ico',
-      '/soccer/icon/apple-touch-icon-57x57.png',
-      '/soccer/icon/apple-touch-icon-60x60.png',
-      '/soccer/icon/apple-touch-icon-72x72.png',
-      '/soccer/icon/apple-touch-icon-76x76.png',
-      '/soccer/icon/apple-touch-icon-114x114.png',
-      '/soccer/icon/apple-touch-icon-120x120.png',
-      '/soccer/icon/apple-touch-icon-144x144.png',
-      '/soccer/icon/apple-touch-icon-152x152.png',
-      '/soccer/icon/favicon-16x16.png',
-      '/soccer/icon/favicon-32x32.png',
-      '/soccer/icon/favicon-96x96.png',
-      '/soccer/icon/favicon-128.png',
-      '/soccer/icon/favicon-196x196.png',
-      '/soccer/icon/icon-192x192.png',
-      '/soccer/icon/icon-512x512.png'
-    ]);
+	return cache.addAll([
+	  '/',
+	  '/soccer/offline.html',
+	  '/soccer/index.html',
+	  '/soccer/arrow.jpg',
+	  '/soccer/soccerapp.js',
+	  '/soccer/style.css',
+	  '/soccer/vue.min.js',
+	  '/soccer/favicon.ico',
+	  '/soccer/icon/apple-touch-icon-57x57.png',
+	  '/soccer/icon/apple-touch-icon-60x60.png',
+	  '/soccer/icon/apple-touch-icon-72x72.png',
+	  '/soccer/icon/apple-touch-icon-76x76.png',
+	  '/soccer/icon/apple-touch-icon-114x114.png',
+	  '/soccer/icon/apple-touch-icon-120x120.png',
+	  '/soccer/icon/apple-touch-icon-144x144.png',
+	  '/soccer/icon/apple-touch-icon-152x152.png',
+	  '/soccer/icon/favicon-16x16.png',
+	  '/soccer/icon/favicon-32x32.png',
+	  '/soccer/icon/favicon-96x96.png',
+	  '/soccer/icon/favicon-128.png',
+	  '/soccer/icon/favicon-196x196.png',
+	  '/soccer/icon/icon-192x192.png',
+	  '/soccer/icon/icon-512x512.png'
+	]);
   });
 }
 
