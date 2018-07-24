@@ -59,14 +59,17 @@ function fromCache(request) {
       //v3
       if (!matching) {
       	if (navigator.onLine) {
+      	  console.log('from online', request.url);
       	  return fetch(request);
       	} else {
       	  if (request.method === 'GET' && request.headers.get('accept').includes('text/html')) {
+      	  	console.log('offline.html');
       	  	return cache.match('/soccer/offline.html');
       	  }
 
       	}
       } else {
+      	console.log('from cache', request.url);
       	return matching;
       }
       
