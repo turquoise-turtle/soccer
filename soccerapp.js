@@ -9,6 +9,10 @@ if ('serviceWorker' in navigator) {
 	});
 }
 var installPromptEvent;
+window.addEventListener('beforeinstallprompt', function(event){
+	installPromptEvent = event;
+	vm.a2hsshow = true;
+});
 
 //console.log('new', location.search);
 var vm = new Vue({
@@ -182,6 +186,9 @@ var vm = new Vue({
 			}
 			// Clear the saved prompt since it can't be used again
 			window.installPromptEvent = null;
+		}).catch(function(error){
+			console.log('a2hs error');
+			console.log(error);
 		});
     },
     updateonline: function() {
@@ -195,13 +202,9 @@ var vm = new Vue({
   mounted: function () {
     var that = this;
     this.loadtable();
-    document.querySelector('#text').innerHTML = '';
-    window.addEventListener('beforeinstallprompt', function(event){
-    	window.installPromptEvent = event;
-    	that.a2hsshow = true;
-    });
     window.addEventListener('online', this.updateonline);
     window.addEventListener('offline', this.updateonline);
+    this.updateonline();
   },
   watch: {
     club: function (newClub, oldClub) {
