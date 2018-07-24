@@ -25,7 +25,7 @@
 		}
 	],
 	"start_url": "/soccer/index.html",
-	"display": "fullscreen",
+	"display": "standalone",
 	"theme_color": "#0C42CC",
 	"background_color": "#0C42CC"
 }
