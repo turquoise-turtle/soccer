@@ -13,7 +13,9 @@ window.addEventListener('beforeinstallprompt', function(event){
 	installPromptEvent = event;
 	vm.a2hsshow = true;
 });
-document.querySelector('#a2hsbtn').addEventListener('click', a2hsclick);
+document.addEventListener('DOMContentLoaded', function(e){
+	document.querySelector('#a2hsbtn').addEventListener('click', a2hsclick);
+});
 function a2hsclick(e) {
 	vm.a2hsshow = false;
 	installPromptEvent.prompt();
