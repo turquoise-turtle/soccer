@@ -13,6 +13,23 @@ window.addEventListener('beforeinstallprompt', function(event){
 	installPromptEvent = event;
 	vm.a2hsshow = true;
 });
+document.querySelector('#a2hsbtn').addEventListener('click', a2hsclick);
+function a2hsclick(e) {
+	vm.a2hsshow = false;
+	installPromptEvent.prompt();
+	installPromptEvent.userChoice.then(function(choice) {
+		if (choice.outcome === 'accepted') {
+			console.log('User accepted the A2HS prompt');
+		} else {
+			console.log('User dismissed the A2HS prompt');
+		}
+		// Clear the saved prompt since it can't be used again
+		installPromptEvent = null;
+	}).catch(function(error){
+		console.log('a2hs error');
+		console.log(error);
+	});
+}
 
 //console.log('new', location.search);
 var vm = new Vue({
@@ -174,23 +191,7 @@ var vm = new Vue({
       };
       xhr.send();
     },
-    a2hsclick: function(e) {
-    	var that = this;
-    	this.a2hsshow = false;
-    	window.installPromptEvent.prompt();
-    	window.installPromptEvent.userChoice.then(function(choice) {
-			if (choice.outcome === 'accepted') {
-				console.log('User accepted the A2HS prompt');
-			} else {
-				console.log('User dismissed the A2HS prompt');
-			}
-			// Clear the saved prompt since it can't be used again
-			window.installPromptEvent = null;
-		}).catch(function(error){
-			console.log('a2hs error');
-			console.log(error);
-		});
-    },
+   
     updateonline: function() {
     	if (!navigator.onLine) {
     		this.offline = true;
