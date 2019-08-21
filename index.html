@@ -40,13 +40,21 @@
   <option value="2">2</option>
   <option value="3">3</option>
   </select>-->
-        <div class="select">
-          <select class="s" id="resulttype" v-model="resulttype">
+        <div>
+<!--           <select class="s" id="resulttype" v-model="resulttype">
             <option disabled value="">Please select one</option>
             <option value="result">Results</option>
             <option value="tables">Table</option>
             <option value="fixtures">Fixtures</option>
-          </select>
+           </select> -->
+			<input type="radio" id="one" value="result" v-model="resulttype">
+			<label for="one">Results</label>
+			<br>
+			<input type="radio" id="two" value="tables" v-model="resulttype">
+			<label for="two">Tables</label>
+			<br>
+			<input type="radio" id="three" value="fixtures" v-model="resulttype">
+			<label for="three">Fixtures</label>
         </div>
         <div class="select">
           <select class="s" id="SSearchAges" v-model="age"> 
