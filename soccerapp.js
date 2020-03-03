@@ -42,7 +42,7 @@ var vm = new Vue({
     //round: '',
     resulttype: 'tables',
     type: 'sstables',
-    age: '18',
+    age: '21',
     grade: 'E',
     club: '',
     e: 0,
