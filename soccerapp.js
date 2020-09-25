@@ -173,7 +173,9 @@ var vm = new Vue({
 		var table = doc.getElementsByTagName('table')[6];
               table.style.width = '100%';
 			  //move the team grade to the second cell
-			  table.getElementsByTagName('tr')[0].getElementsByTagName('td')[1].innerHTML = table.getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerHTML;
+			  var headerrow = table.getElementsByTagName('tr')[0];
+			  headerrow.getElementsByTagName('td')[1].innerHTML = headerrow.getElementsByTagName('td')[0].innerHTML;
+			  headerrow.removeChild(headerrow.firstChild);
 			  //get rid of the blank first cells in the rest of the rows
 			  for (var i=1; i<table.rows.length; i++) {
 				  var myrow = table.getElementsByTagName('tr')[i];
