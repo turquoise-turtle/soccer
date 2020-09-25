@@ -179,7 +179,8 @@ var vm = new Vue({
 				  var myrow = table.getElementsByTagName('tr')[i];
 				  myrow.removeChild(myrow.firstChild);
 			  }
-              document.querySelector('#table').appendChild(table);  
+              document.querySelector('#table').appendChild(table);
+			  break;
             default:
               var table = doc.getElementsByTagName('table')[6];
               table.style.width = '100%';
