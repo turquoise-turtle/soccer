@@ -169,6 +169,17 @@ var vm = new Vue({
               document.querySelector('#table').appendChild(table);
               document.querySelector('#table').appendChild(table2);
               break;
+	     case 'sstables':
+		var table = doc.getElementsByTagName('table')[6];
+              table.style.width = '100%';
+			  //move the team grade to the second cell
+			  table.getElementsByTagName('tr')[0].getElementsByTagName('td')[1].innerHTML = table.getElementsByTagName('tr')[0].getElementsByTagName('td')[0].innerHTML;
+			  //get rid of the blank first cells in the rest of the rows
+			  for (var i=1; i<table.rows.length; i++) {
+				  var myrow = table.getElementsByTagName('tr')[i];
+				  myrow.removeChild(myrow.firstChild);
+			  }
+              document.querySelector('#table').appendChild(table);  
             default:
               var table = doc.getElementsByTagName('table')[6];
               table.style.width = '100%';
